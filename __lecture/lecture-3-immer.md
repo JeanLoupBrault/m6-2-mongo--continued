@@ -10,13 +10,13 @@ Spot and fix the error:
 
 ```js
 const initialState = {
-  name: 'Arnold',
-  headShape: 'football',
+  name: "Arnold",
+  headShape: "football",
   bestFriend: null,
 };
 
 function reducer(state, action) {
-  if (action.type === 'MAKE_FRIEND') {
+  if (action.type === "MAKE_FRIEND") {
     state.bestFriend = action.gerald.firstName;
     return state;
   }
@@ -33,16 +33,32 @@ Fix mutability issues
 
 ```js
 const initialState = {
-  burgerToppings: ['lettuce', 'tomato', 'mayo'],
+  burgerToppings: ["lettuce", "tomato", "mayo"],
 };
 
 function reducer(state, action) {
-  if (action.type === 'ADD_KETCHUP') {
-    state.burgerToppings.push('ketchup');
+  if (action.type === "ADD_KETCHUP") {
+    state.burgerToppings.push("ketchup");
     return state;
   }
 }
 ```
+
+const initialState = {
+burgerToppings: ['lettuce', 'tomato', 'mayo'],
+};
+
+function reducer(state, action) {
+if (action.type === 'ADD_KETCHUP') {
+return {
+...state,
+burgerToppings: [
+...state.burgerToppings,
+'ketchup'
+]
+}
+}
+}
 
 ---
 
@@ -50,7 +66,7 @@ function reducer(state, action) {
 
 ```js
 const initialState = {
-  raceBeganAt: '2020-03-27T12:34:56.000Z',
+  raceBeganAt: "2020-03-27T12:34:56.000Z",
   competitors: {
     orangers: {
       racers: {
@@ -69,7 +85,7 @@ const initialState = {
 };
 
 function reducer(state, action) {
-  if (action.type === 'REMOVE_RACER_FROM_TEAM') {
+  if (action.type === "REMOVE_RACER_FROM_TEAM") {
     const { teamId, racerName } = action;
 
     delete state.competitors[teamId].racers[racerName];
@@ -92,7 +108,7 @@ Immer lets you _use mutable methods_ without actually mutating the original stat
 ---
 
 ```js
-import produce from 'immer';
+import produce from "immer";
 
 const state = { hi: 5 };
 
@@ -114,13 +130,13 @@ Let's try this again:
 
 ```js
 const initialState = {
-  name: 'Arnold',
-  headShape: 'football',
+  name: "Arnold",
+  headShape: "football",
   bestFriend: null,
 };
 
 function reducer(state, action) {
-  if (action.type === 'MAKE_FRIEND') {
+  if (action.type === "MAKE_FRIEND") {
     state.bestFriend = action.gerald.firstName;
     return state;
   }
@@ -137,12 +153,12 @@ Do it again, but with Immer!
 
 ```js
 const initialState = {
-  burgerToppings: ['lettuce', 'tomato', 'mayo'],
+  burgerToppings: ["lettuce", "tomato", "mayo"],
 };
 
 function reducer(state, action) {
-  if (action.type === 'ADD_KETCHUP') {
-    state.burgerToppings.push('ketchup');
+  if (action.type === "ADD_KETCHUP") {
+    state.burgerToppings.push("ketchup");
     return state;
   }
 }
@@ -152,7 +168,7 @@ function reducer(state, action) {
 
 ```js
 const initialState = {
-  raceBeganAt: '2020-03-27T12:34:56.000Z',
+  raceBeganAt: "2020-03-27T12:34:56.000Z",
   competitors: {
     orangers: {
       racers: {
@@ -171,7 +187,7 @@ const initialState = {
 };
 
 function reducer(state, action) {
-  if (action.type === 'REMOVE_RACER_FROM_TEAM') {
+  if (action.type === "REMOVE_RACER_FROM_TEAM") {
     const { teamId, racerName } = action;
 
     delete state.competitors[teamId].racers[racerName];
